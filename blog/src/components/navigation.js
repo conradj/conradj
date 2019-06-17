@@ -2,7 +2,7 @@ import React from "react"
 import { Link as GatsbyLink } from "gatsby"
 import styled from "styled-components"
 
-const Navigation = styled.ul`
+const StyledNavigation = styled.ul`
   padding: 0;
   list-style: none;
   display: flex;
@@ -32,8 +32,8 @@ const StyledGatsbyLink = styled(GatsbyLink)`
   font-size: 1rem;
 `
 
-export default () => (
-  <Navigation role="navigation">
+const Navigation = () => (
+  <StyledNavigation role="navigation">
     <NavItem>
       <StyledLink href="https://www.conradj.co.uk">
         Back to conradj.co.uk
@@ -42,5 +42,7 @@ export default () => (
     <NavItem>
       <StyledGatsbyLink to="/">Blog Home</StyledGatsbyLink>
     </NavItem>
-  </Navigation>
+  </StyledNavigation>
 )
+
+export default Navigation
