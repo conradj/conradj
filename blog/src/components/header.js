@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
-import Navigation from "src/components/Navigation"
+import Navigation from "src/components/navigation"
 
 const StyledHeader = styled.header`
   marginbottom: 1.45rem;
