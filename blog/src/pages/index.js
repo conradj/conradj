@@ -4,11 +4,6 @@ import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
-const StyledSmall = styled.small`
-  white-space: pre;
-  font-size: 0.7rem;
-`
-
 function BlogIndex({ data }) {
   const { edges: posts } = data.allMdx
   return (
@@ -22,9 +17,7 @@ function BlogIndex({ data }) {
                 <h2>
                   {title}
                   <br />
-                  <StyledSmall>
-                    {format(date, "dddd, MMMM Do, YYYY")}
-                  </StyledSmall>
+                  <small>{format(date, "dddd, MMMM Do, YYYY")}</small>
                 </h2>
               </div>
             </header>
