@@ -1,18 +1,32 @@
+import format from "date-fns/format"
 import React from "react"
+import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+
+const StyledSmall = styled.small`
+  white-space: pre;
+  font-size: 0.7rem;
+`
 
 function BlogIndex({ data }) {
   const { edges: posts } = data.allMdx
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const { title, author } = node.frontmatter
+        const { title, author, date } = node.frontmatter
         return (
           <div key={node.id}>
             <header>
-              <div>{title}</div>
-              <div>Posting By {author}</div>
+              <div>
+                <h2>
+                  {title}
+                  <br />
+                  <StyledSmall>
+                    {format(date, "dddd, MMMM Do, YYYY")}
+                  </StyledSmall>
+                </h2>
+              </div>
             </header>
             <p>{node.excerpt}</p>
             <Link to={node.fields.slug}>View Article</Link>
@@ -39,6 +53,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             author
+            date
           }
         }
       }
