@@ -11,12 +11,6 @@ const StyledHeader = styled.header`
   font-size: 1.5rem;
 `
 
-const Navigation = styled.nav`
-  margin: 0 auto;
-  maxwidth: 960;
-  padding: 1.45rem 1.0875rem;
-`
-
 const StyledEnd = styled.div`
   width: 100px;
 `

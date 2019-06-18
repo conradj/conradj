@@ -1,6 +1,5 @@
 import format from "date-fns/format"
 import React from "react"
-import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
@@ -9,7 +8,7 @@ function BlogIndex({ data }) {
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const { title, author, date } = node.frontmatter
+        const { title, date } = node.frontmatter
         return (
           <div key={node.id}>
             <header>

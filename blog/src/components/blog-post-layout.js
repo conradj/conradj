@@ -4,7 +4,7 @@ import Layout from "./layout"
 import format from "date-fns/format"
 
 function BlogPostLayout({ children, pageContext }) {
-  const { title, author, date } = pageContext.frontmatter
+  const { title, date } = pageContext.frontmatter
   return (
     <Layout>
       <Helmet>
