@@ -18,7 +18,6 @@ const Navigation = styled.nav`
 `
 
 const StyledEnd = styled.div`
-  font-size: 0.5rem;
   width: 100px;
 `
 
@@ -34,13 +33,13 @@ const StyledH1 = styled.h1`
 
 const Header = ({ siteTitle }) => (
   <StyledHeader>
-    <StyledEnd></StyledEnd>
+    <StyledEnd>
+      <Link to="/">back</Link>
+    </StyledEnd>
     <StyledMiddle>
       <StyledH1>Conrad is null or not an object</StyledH1>
     </StyledMiddle>
-    <StyledEnd>
-      <a href="https://www.conradj.co.uk">back</a>
-    </StyledEnd>
+    <StyledEnd></StyledEnd>
   </StyledHeader>
 )
 
