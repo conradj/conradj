@@ -19,7 +19,10 @@ const StyledAvatar = styled.div`
 
 const Avatar = () => (
   <StyledAvatar>
-    <img src="https://conradj.co.uk/images/heads/me1.jpg" />
+    <img
+      src="https://conradj.co.uk/images/heads/me1.jpg"
+      alt="The head of Conrad"
+    />
   </StyledAvatar>
 )
 
