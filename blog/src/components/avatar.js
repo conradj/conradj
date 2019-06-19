@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const StyledAvatar = styled.div`
   margin: 10px;
-  border: 3px solid rgba(150, 180, 150, 0.8);
+  border: 3px solid hsl(159, 100%, 73%);
   border-radius: 50%;
   height: 73px;
   width: 73px;
