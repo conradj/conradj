@@ -74,6 +74,7 @@ module.exports = {
           `Kadwa`,
           `Merriweather\:700`,
           `Open Sans`,
+          `Cutive Mono`,
           // `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
         ],
       },

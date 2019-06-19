@@ -29,7 +29,7 @@ const StyledMiddle = styled.div`
 `
 
 const StyledH1 = styled.h1`
-  font-family: monospace;
+  font-family: "Cutive Mono", monospace;
   font-size: 0.8rem;
   margin: 0rem;
 `
