@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Conrad Jackson Blog`,
-    description: `This is my blog`,
+    title: `conrad is null or not an object - A Blog`,
+    description: `blog for conrad jackson conradj`,
     author: `@conradj`,
   },
   plugins: [
@@ -57,7 +57,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/me.png`, // This path is relative to the root of the site.
       },
     },
     {
