@@ -1,6 +1,7 @@
 import format from "date-fns/format"
 import React from "react"
 import { graphql, Link } from "gatsby"
+import Image from "../components/image"
 import Layout from "../components/layout"
 
 function BlogIndex({ data }) {
@@ -8,10 +9,11 @@ function BlogIndex({ data }) {
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const { title, date } = node.frontmatter
+        const { title, date, image } = node.frontmatter
         return (
           <div key={node.id}>
             <header>
+              <Image imgName={image}></Image>
               <div>
                 <h2>
                   {title}
