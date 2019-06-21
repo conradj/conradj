@@ -40,6 +40,9 @@ const SocialCard = ({ url, title, description, imageName, imageAlt }) => (
       const imgUrl = image
         ? `https://blog.conradj.co.uk${image.node.fixed.src}`
         : ""
+        
+        console.log(1,imgUrl)
+        
       return (
         <Helmet>
           <meta name="og:type" content="article" />
