@@ -13,8 +13,8 @@ function BlogIndex({ data }) {
         return (
           <div key={node.id}>
             <header>
-              <Image imgName={image}></Image>
               <div>
+                <Image imgName={image}></Image> 
                 <h2>
                   {title}
                   <br />
