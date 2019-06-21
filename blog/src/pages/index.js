@@ -2,6 +2,7 @@ import format from "date-fns/format"
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import Img from "gatsby-image"
 
 function BlogIndex({ data }) {
   const { edges: posts } = data.allMdx
@@ -9,10 +10,12 @@ function BlogIndex({ data }) {
     <Layout>
       {posts.map(({ node }) => {
         const { title, date } = node.frontmatter
+        const { hero } = node.fields
         return (
           <div key={node.id}>
             <header>
               <div>
+                <Img fixed={hero.childImageSharp.fixed} />
                 <h2>
                   {title}
                   <br />
@@ -41,6 +44,15 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
+            hero {
+              childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fixed(width: 600) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
           frontmatter {
             title
