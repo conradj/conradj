@@ -33,6 +33,9 @@ const SocialCard = ({ url, title, description, imageName, imageAlt }) => (
       const image = data.allImageSharp.edges.find(
         edge => edge.node.fixed.originalName === imageName
       )
+      if(image) {
+        console.log(image.node.fixed.src)
+      }
 
       const imgUrl = image
         ? `https://blog.conradj.co.uk${image.node.fixed.src}`
