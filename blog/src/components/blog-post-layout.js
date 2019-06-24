@@ -2,7 +2,6 @@ import React from "react"
 import Helmet from "react-helmet"
 import Layout from "./layout"
 import SocialCard from "./socialcard"
-import Image from "./image"
 import Img from "gatsby-image"
 import format from "date-fns/format"
 
