@@ -9,12 +9,23 @@ function BlogIndex({ data }) {
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const { title, date, image, author } = node.frontmatter
+        const {
+          title,
+          date,
+          image,
+          author,
+          imageAlt,
+          imageTitle,
+        } = node.frontmatter
         return (
           <div key={node.id}>
             <header>
               <div>
-                <Img fluid={image.childImageSharp.fluid} />
+                <Img
+                  fluid={image.childImageSharp.fluid}
+                  alt={imageAlt}
+                  title={imageTitle}
+                />
                 <h2>
                   {title}
                   <br />
@@ -48,6 +59,8 @@ export const pageQuery = graphql`
             title
             author
             date
+            imageAlt
+            imageTitle
             image {
               id
               childImageSharp {
