@@ -37,7 +37,6 @@ const BlogPostLayout = ({ children, pageContext, location }) => {
   const result = data.allMdx.edges.find(({ node }) => {
     return node.frontmatter.title === blogTitle
   })
-  console.log(result)
   const { title, date, image, imageAlt, imageTitle } = result.node.frontmatter
   const { excerpt } = result.node
   return (
