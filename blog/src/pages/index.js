@@ -1,7 +1,7 @@
 import format from "date-fns/format"
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Image from "../components/image"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 
 function BlogIndex({ data }) {
@@ -9,12 +9,12 @@ function BlogIndex({ data }) {
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const { title, date, image } = node.frontmatter
+        const { title, date, image, author } = node.frontmatter
         return (
           <div key={node.id}>
             <header>
               <div>
-                <Image imgName={image}></Image> 
+                <Img fluid={image.childImageSharp.fluid} />
                 <h2>
                   {title}
                   <br />
@@ -48,6 +48,14 @@ export const pageQuery = graphql`
             title
             author
             date
+            image {
+              id
+              childImageSharp {
+                fluid(maxWidth: 600) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
