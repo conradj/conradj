@@ -31,7 +31,7 @@ const StyledMiddle = styled.div`
 const StyledH1 = styled.h1`
   font-family: "Cutive Mono", monospace;
   font-size: 0.8rem;
-  margin: 0rem;
+  margin: 0rem 1rem 0rem 0rem;
 `
 
 const Header = ({ siteTitle }) => (
