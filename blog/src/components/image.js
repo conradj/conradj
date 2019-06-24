@@ -33,11 +33,9 @@ const Image = ({ imgName }) => (
       const image = data.allImageSharp.edges.find(
         edge => edge.node.fluid.originalName === imgName
       )
-      console.log(2, imgName)
       if (!image) {
         return null
       }
-      console.log(3)
       return <Img fluid={image.node.fluid} />
     }}
   />
