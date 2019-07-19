@@ -1,0 +1,151 @@
+---
+title: Make an SVG chart using React and D3
+author: Conrad Jackson
+date: 2019-07-07
+image: peter-hershey-ZtiEeDGUJPE-unsplash.jpg
+imageAlt: Cool chart
+imageTitle: chart
+---
+
+import Chart2 from "./chartdemo/Chart2"
+
+I am a developer, so I should write something technical on my blog. I'm going to show you a really easy way of making a line chart with React and SVG.
+
+This is the data I'm going to use:
+
+```js
+const data = [
+  { year: 1980, calories: 100 },
+  { year: 1981, calories: 110 },
+  { year: 1982, calories: 120 },
+  { year: 1983, calories: 123 },
+  { year: 1984, calories: 129 },
+  { year: 1985, calories: 116 },
+  { year: 1986, calories: 134 },
+  { year: 1987, calories: 159 },
+  { year: 1988, calories: 172 },
+  { year: 1989, calories: 207 },
+]
+```
+
+First, let's make the chart area:
+
+<!-- prettier-ignore -->
+```jsx
+({
+  height = 400,
+  width = 600,
+  marginTop = 50,
+  marginBottom = 50,
+  marginLeft = 50,
+  marginRight = 50,
+}) => {
+  const innerHeight = height - marginTop - marginBottom;
+  const innerWidth = width - marginLeft - marginRight;
+  const innerTransform = `translate(${marginLeft},${marginTop})`;
+  return (
+    <svg height={height} width={width}>
+      <g transform={innerTransform}>
+        <rect width={innerWidth} height={innerHeight} >
+        </rect>
+      </g>
+    </svg>
+  )
+}
+```
+
+Next, we're going to need our Axis. Axis can be tricky, expecially if you don't know what your data might look like. Your values and ranges could be small or large, which can make constructing the chart axis tricky.
+
+Luckily, with D3 it doesn't have to be that way. First, we create a scale for each axis.
+
+```js
+const yearScale = d3
+  .scaleLinear()
+  .domain([data[0].year, data[data.length - 1].year])
+  .range([0, innerWidth])
+
+const calorieScale = d3
+  .scaleLinear()
+  .domain([data[0].calories, data[data.length - 1].calories])
+  .range([innerHeight, 0])
+```
+
+You can see we give each scale the lowest and highest value, and the range, as a function of the canvas we're drawing on (in this case our SVG chart).
+
+Using the package [react-d3-axis] makes drawing proper chart axis really easy:
+
+```jsx
+<Axis {...axisPropsFromTickScale(calorieScale, 10)} style={{ orient: LEFT }} />
+<Axis {...axisPropsFromTickScale(yearScale, 10)} />
+```
+
+Our chart now looks like this:
+
+<Chart2 showAxis={true} />
+
+The last thing we need to do is plot the data as a line. We'll create a method called `linePath` as follows:
+
+```js
+const linePath = d3
+  .line()
+  .x(d => yearScale(d.year))
+  .y(d => calorieScale(d.calories))
+```
+
+This takes in your data and provides co-ordinates for each item. You can see that it takes the scales we created to get the right positions.
+
+To draw a `path` in SVG using this method then, would simply look like this:
+
+```js
+<path d={linePath(data)} />
+```
+
+So this is all of the code, including the positioning and styling:
+
+```jsx
+import React from "react"
+import * as d3 from "d3"
+import { Axis, axisPropsFromTickScale, LEFT, BOTTOM } from "react-d3-axis"
+
+const Chart = ({data, height,
+  width,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  data,
+  yearScale,
+  calorieScale,}) => {
+  const innerHeight = height - marginTop - marginBottom
+  const innerWidth = width - marginLeft - marginRight
+  const innerTransform = `translate(${marginLeft},${marginTop})`
+  const linePath = d3
+    .line()
+    .x(d => yearScale(d.year))
+    .y(d => calorieScale(d.calories))
+  return (
+    <svg height={height} width={width}>
+      <g transform={innerTransform}>
+        <rect width={innerWidth} height={innerHeight} fill="white"></rect>
+        {showAxis && (
+          <>
+            <Axis
+              {...axisPropsFromTickScale(calorieScale, 10)}
+              style={{ orient: LEFT }}
+            />
+            <g transform={`translate(0, ${innerHeight})`}>
+              <Axis {...axisPropsFromTickScale(yearScale, 10)} />
+            </g>
+            {showLine && <path d={linePath(data)} />}
+          </>
+        )}
+      </g>
+    </svg>
+  )
+}
+
+```
+
+Resulting in this chart:
+
+<Chart2 showAxis={true} showLine={true} />
