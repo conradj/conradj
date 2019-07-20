@@ -113,12 +113,19 @@ const Chart = ({data, height,
   marginBottom,
   marginLeft,
   marginRight,
-  data,
-  yearScale,
-  calorieScale,}) => {
+  data}) => {
   const innerHeight = height - marginTop - marginBottom
   const innerWidth = width - marginLeft - marginRight
   const innerTransform = `translate(${marginLeft},${marginTop})`
+  const yearScale = d3
+  .scaleLinear()
+  .domain([data[0].year, data[data.length - 1].year])
+  .range([0, innerWidth])
+
+const calorieScale = d3
+  .scaleLinear()
+  .domain([data[0].calories, data[data.length - 1].calories])
+  .range([innerHeight, 0])
   const linePath = d3
     .line()
     .x(d => yearScale(d.year))
