@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import Avatar from "./avatar"
+import Avatar from "./Avatar"
 
 const StyledHeader = styled.header`
   border-top: solid 4px #d81159;
