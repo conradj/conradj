@@ -1,13 +1,12 @@
 import React from "react"
 import Helmet from "react-helmet"
-import { MDXProvider } from "@mdx-js/react"
-import Layout from "./layout"
-import SocialCard from "./socialcard"
-import MDXCodeComponent from "./MDXCodeComponent"
 import Img from "gatsby-image"
-import format from "date-fns/format"
-
 import { useStaticQuery, graphql } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
+import format from "date-fns/format"
+import Layout from "./Layout"
+import SocialCard from "./SocialCard"
+import MDXCodeComponent from "./MDXCodeComponent"
 
 const BlogPostLayout = ({ children, pageContext, location }) => {
   const { title: blogTitle } = pageContext.frontmatter
