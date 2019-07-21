@@ -47,7 +47,7 @@ module.exports = {
         extensions: [".mdx", ".md"],
         defaultLayouts: {
           default: require.resolve(
-            `${__dirname}/src/components/blog-post-layout.js`
+            `${__dirname}/src/components/BlogPostLayout.js`
           ),
         },
         gatsbyRemarkPlugins: [

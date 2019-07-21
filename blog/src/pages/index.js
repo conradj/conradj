@@ -2,7 +2,7 @@ import format from "date-fns/format"
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 function BlogIndex({ data }) {
   const { edges: posts } = data.allMdx
@@ -47,7 +47,10 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query blogIndex {
-    allMdx {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       edges {
         node {
           id

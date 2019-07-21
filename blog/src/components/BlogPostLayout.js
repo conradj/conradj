@@ -1,7 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { MDXProvider } from "@mdx-js/react"
-
 import Layout from "./layout"
 import SocialCard from "./socialcard"
 import MDXCodeComponent from "./MDXCodeComponent"
